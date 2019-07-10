@@ -1,0 +1,25 @@
+.mainCont {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-size: 4vw !important;
+}
+
+.getResultsButton {
+    width: 50%;
+    height: 5rem;
+    font-size: 2rem !important;
+}
+
+#user-input-text {
+    font-size: 1.5rem !important;
+}
+
+#results-text {
+    font-size: 1.5rem !important;
+}
+
+#results-label-text {
+    font-size: 3rem !important;
+}

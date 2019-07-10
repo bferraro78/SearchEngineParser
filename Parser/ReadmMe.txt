@@ -1,0 +1,42 @@
+## Ben Ferraro
+
+Hello InfoTrack team...Welcome to my Search Engine Parser
+
+## About the App ##
+
+A Knockout.js/HTML5/Boostrap front end communicating with a .NET Core Backend WebAPI application, both running locally (instructions further down). The WebAPI is equipped with a POST (and a GET for testing from URL purposes). The Website has a mini UI that allows the user to search for a list of keywords (InfoTrack, Info, etc) and change the search subject. Due to Google’s limit of times you can submit HTTP GET requests before blocking the user for a short period of time, I began saving the latest HTML code response to a file on the server. I have a checkbox on the UI that will enable a flag that allows the user to either parse the last searched subject, or get new results from Google. (This was really used for testing purposes at first). Results will come in by listing the keyword, followed by a list of numbers that represents where the keyword came up in the top 100 results of the search.
+
+## About the Parser ##
+
+The parser utilizes an HttpClient object and the GetStreamAsync() method to download the actual webpage html. From here I noticed a generic pattern that Google uses to list its search results in an orderly fashion. Dividing up the long html string by each class, then searching that search result section string for a few other classes/html tags to confirm that this in fact one of the search results.
+
+## Business Case ##
+
+My Search Engine Parser will allow the user to search for any list of keywords on any search subject. In this problem set, for the InfoTrack CEO, it will allow him to search for any keywords related to InfoTrack, or even see how our competitors stack up on a google search. The flag allows the user to research the same result, with different keywords...Google searches can change in a flash, this may be helpful to research already proven search results. This also allows the user to run the application without contacting Google.
+
+## Instructions on running the application ##
+
+MAC:
+You must enter the Terminal and go to the /LaunchScripts directory. There, run 'chmod 755 LaunchServer' and 'chmod 755 LaunchWebServer' to make the two scripts LaunchServer and LaunchWebsite executable. Executing the two scripts will start the .Net Core WebAPI server and website server. 
+
+PC:
+Execute the StartWindowsServers.bat script in the /LaunchScripts directory.
+
+The webserver uses the .NET Core CLI ‘dotnet run’ command to start the server on localhost:5001. You must have the .Net Core 2.2 SDK installed on your machine (https://dotnet.microsoft.com/download). The website server uses ‘http-server’ command to start a web server on localhost:8080 (8081 on Windows). THIS IS A NODE NPM PACKAGE, MAY NEED TO RUN ‘npm install http-server -g’ to install the http-server package. Also ensure that you have Node Package Manager installed.
+
+If these scripts are not working for whatever reason. You must manually enter each /Parser and /ParserUI folder and run ‘dotnet run’ and ‘http-server’ commands respectively. 
+Go to ‘http://127.0.0.1:8080’ on MAC and ‘http://127.0.0.1:8081/index.html' on WINDOWS. Http-server will tell you what port it is running on (Windows machines may say 8081) In your browser of choice (tested on Google Chrome) and follow the instructions to start searching!
+
+## Features to Implement ##
+
+Given more time I would have liked to implement the following features:
+Allow the user to change the base url on the search (mainly changing the country the search is executed in
+More readable search results, more interactive/intuitive/user friendly UI
+Give the user the ability to change the amount of number if results parsed
+Utilize the Google API as to not get a 429 - Too many requests error from Google...this happens only after a few searches
+
+## Tech Features to Implement ##
+
+Push each service to the cloud, so we do not have to run locally and manually install needed libraries and packages
+Write more test cases for the parser
+Search other search engines for results!
